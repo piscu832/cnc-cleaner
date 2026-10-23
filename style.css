@@ -667,18 +667,240 @@ textarea::placeholder {
 }
 
 /* ==========================================================================
-   RESPONSIVE DESIGN
+   MOBILE TABS & STICKY ACTIONS
    ========================================================================== */
-@media (max-width: 992px) {
-  .editors-layout {
-    grid-template-columns: 1fr;
-    grid-template-rows: 1fr auto 1fr;
-  }
-  .editor-divider {
-    transform: rotate(90deg);
-    padding: 0.5rem 0;
-  }
+.mobile-tabs-bar {
+  display: none;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: 4px;
+  gap: 4px;
+}
+
+.mobile-tab-btn {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.65rem 0.5rem;
+  font-family: var(--font-sans);
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  background: transparent;
+  border: none;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  user-select: none;
+}
+
+.mobile-tab-btn.active {
+  background: var(--bg-surface);
+  color: var(--text-main);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
+}
+
+.mobile-tab-btn.active#tab-btn-clean {
+  color: var(--accent-cyan);
+  border-bottom: 2px solid var(--accent-cyan);
+}
+
+.mobile-tab-btn.active#tab-btn-orig {
+  color: var(--accent-amber);
+  border-bottom: 2px solid var(--accent-amber);
+}
+
+.mobile-sticky-actions {
+  display: none;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(16, 21, 34, 0.95);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-top: 1px solid var(--border-subtle);
+  padding: 0.75rem 1rem;
+  gap: 0.75rem;
+  z-index: 100;
+  box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.5);
+}
+
+.mobile-action-btn {
+  flex: 1;
+  padding: 0.75rem 1rem;
+  font-size: 0.9rem;
+  justify-content: center;
+  border-radius: var(--radius-sm);
+}
+
+/* ==========================================================================
+   RESPONSIVE DESIGN (TABLETS & MÓVILES)
+   ========================================================================== */
+@media (max-width: 860px) {
   .app-container {
-    padding: 1rem;
+    padding: 0.75rem 0.75rem 5.5rem 0.75rem; /* Espacio para barra inferior */
+    gap: 1rem;
+  }
+
+  .app-header {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.85rem;
+    padding-bottom: 1rem;
+  }
+
+  .header-left {
+    align-items: center;
+  }
+
+  .app-title {
+    font-size: 1.35rem;
+  }
+
+  .app-subtitle {
+    font-size: 0.75rem;
+  }
+
+  .header-actions {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    width: 100%;
+  }
+
+  .header-actions .btn {
+    justify-content: center;
+    padding: 0.55rem 0.8rem;
+    font-size: 0.82rem;
+  }
+
+  /* Opciones en 1 columna táctil */
+  .options-grid {
+    grid-template-columns: 1fr;
+    gap: 0.65rem;
+  }
+
+  .toggle-option {
+    padding: 0.85rem 0.9rem;
+  }
+
+  .custom-prefix-row {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .input-inline-group {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .input-inline-group input {
+    width: 100%;
+  }
+
+  /* Drop zone más compacta para táctil */
+  .drop-zone {
+    padding: 1rem 0.75rem;
+  }
+
+  .drop-text {
+    font-size: 0.88rem;
+  }
+
+  /* Estadísticas fluidas */
+  .stats-bar {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.5rem;
+  }
+
+  .stat-pill {
+    padding: 0.4rem 0.6rem;
+    font-size: 0.72rem;
+    justify-content: space-between;
+  }
+
+  .stat-pill:first-child {
+    grid-column: span 2;
+  }
+
+  /* Mostrar switcher de pestañas móvil */
+  .mobile-tabs-bar {
+    display: flex;
+  }
+
+  /* Ocultar divisor central */
+  .editor-divider {
+    display: none;
+  }
+
+  /* Diseño de editores en móvil: Pestañas alternadas */
+  .editors-layout {
+    display: flex;
+    flex-direction: column;
+    min-height: 420px;
+  }
+
+  .editor-column {
+    flex: 1;
+    min-height: 420px;
+  }
+
+  .editor-column.mobile-hidden {
+    display: none !important;
+  }
+
+  /* Botones del header de cada editor más grandes */
+  .editor-header {
+    padding: 0.55rem 0.75rem;
+  }
+
+  .editor-actions .mini-btn {
+    padding: 0.4rem 0.65rem;
+  }
+
+  .editor-body {
+    min-height: 380px;
+  }
+
+  textarea {
+    font-size: 0.8rem;
+    line-height: 1.5;
+    padding: 0.75rem;
+  }
+
+  .line-numbers {
+    padding: 0.75rem 0.4rem;
+    min-width: 36px;
+    font-size: 0.8rem;
+    line-height: 1.5;
+  }
+
+  /* Barra de acciones flotante en el borde inferior */
+  .mobile-sticky-actions {
+    display: flex;
+  }
+
+  .app-footer {
+    flex-direction: column;
+    text-align: center;
+    gap: 0.4rem;
+    padding-bottom: 1.5rem;
+  }
+}
+
+/* Pantallas muy pequeñas (<= 400px) */
+@media (max-width: 400px) {
+  .stats-bar {
+    grid-template-columns: 1fr;
+  }
+  .stat-pill:first-child {
+    grid-column: span 1;
+  }
+  .app-title {
+    font-size: 1.2rem;
   }
 }

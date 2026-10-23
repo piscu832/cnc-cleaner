@@ -39,6 +39,14 @@ document.addEventListener('DOMContentLoaded', () => {
   const btnPaste = document.getElementById('btn-paste');
   const toast = document.getElementById('toast');
 
+  // Elementos Móviles
+  const tabBtnClean = document.getElementById('tab-btn-clean');
+  const tabBtnOrig = document.getElementById('tab-btn-orig');
+  const colOriginal = document.getElementById('col-original');
+  const colClean = document.getElementById('col-clean');
+  const btnMobileCopy = document.getElementById('btn-mobile-copy');
+  const btnMobileDownload = document.getElementById('btn-mobile-download');
+
   let currentFileName = 'programa.nc';
 
   // Ejemplo realista de Mecanizado CNC (Fresa / Torno con N-codes y comentarios)
@@ -374,6 +382,47 @@ N0250 M30
     }
   }, false);
 
+  // Gestión de pestañas en versión móvil (< 860px)
+  function switchMobileTab(target) {
+    if (window.innerWidth > 860) return;
+    
+    if (target === 'clean') {
+      tabBtnClean.classList.add('active');
+      tabBtnOrig.classList.remove('active');
+      colClean.classList.remove('mobile-hidden');
+      colOriginal.classList.add('mobile-hidden');
+    } else {
+      tabBtnOrig.classList.add('active');
+      tabBtnClean.classList.remove('active');
+      colOriginal.classList.remove('mobile-hidden');
+      colClean.classList.add('mobile-hidden');
+    }
+  }
+
+  if (tabBtnClean && tabBtnOrig) {
+    tabBtnClean.addEventListener('click', () => switchMobileTab('clean'));
+    tabBtnOrig.addEventListener('click', () => switchMobileTab('orig'));
+  }
+
+  // Redimensionamiento de pantalla: asegurar visibilidad correcta
+  window.addEventListener('resize', () => {
+    if (window.innerWidth > 860) {
+      colOriginal.classList.remove('mobile-hidden');
+      colClean.classList.remove('mobile-hidden');
+    } else {
+      const activeTarget = tabBtnClean.classList.contains('active') ? 'clean' : 'orig';
+      switchMobileTab(activeTarget);
+    }
+  });
+
+  // Botones de acción flotantes para móviles
+  if (btnMobileCopy) {
+    btnMobileCopy.addEventListener('click', () => btnCopyClean.click());
+  }
+  if (btnMobileDownload) {
+    btnMobileDownload.addEventListener('click', () => btnDownload.click());
+  }
+
   // Notificación Toast
   let toastTimer = null;
   function showToast(message, isError = false) {
@@ -388,4 +437,8 @@ N0250 M30
 
   // Inicialización con ejemplo para que el usuario experimente inmediatamente
   btnLoadSample.click();
+  // Inicializar estado móvil
+  if (window.innerWidth <= 860) {
+    switchMobileTab('clean');
+  }
 });
