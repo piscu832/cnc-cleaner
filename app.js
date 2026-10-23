@@ -1,5 +1,5 @@
 /**
- * CAM CLEANER - Lógica de Depuración y Limpieza de G-Code
+ * CNC CLEANER - Lógica de Depuración y Limpieza de G-Code
  * Desarrollado para procesamiento de alta velocidad 100% en el cliente.
  */
 

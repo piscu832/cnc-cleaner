@@ -1,8 +1,8 @@
-# 🛠️ CAM Cleaner - G-Code CNC Optimizer
+# 🛠️ CNC Cleaner - G-Code CNC Optimizer
 
-**CAM Cleaner** es una aplicación web moderna, rápida y 100% ejecutada en el navegador para optimizar y limpiar programas G-Code de mecanizado CNC. Su objetivo principal es remover los nombres y números de fila (`N10`, `N0020`, etc.), preservando intacto el código de maquinado.
+**CNC Cleaner** es una aplicación web moderna, rápida y 100% ejecutada en el navegador para optimizar y limpiar programas G-Code de mecanizado CNC. Su objetivo principal es remover los nombres y números de fila (`N10`, `N0020`, etc.), preservando intacto el código de maquinado.
 
-![CAM Cleaner Interface](https://img.shields.io/badge/status-active-success.svg)
+![CNC Cleaner Interface](https://img.shields.io/badge/status-active-success.svg)
 ![Compatible](https://img.shields.io/badge/CNC-Fanuc%20%7C%20Haas%20%7C%20Siemens%20%7C%20GRBL-blue.svg)
 
 ---
