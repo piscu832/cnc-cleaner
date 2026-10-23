@@ -27,8 +27,8 @@ Para tener esta aplicación disponible online de forma gratuita con **GitHub Pag
 2. En GitHub, ve a **Settings** > **Pages** (en el menú lateral izquierdo).
 3. En la sección **Build and deployment** > **Source**, selecciona `Deploy from a branch`.
 4. Elige la rama `main` y la carpeta `/ (root)`. Haz clic en **Save**.
-5. En un par de minutos, GitHub te dará un enlace público como:
-   `https://tu-usuario.github.io/tu-repositorio/`
+5. En un par de minutos, GitHub te dará un enlace público:
+   `https://piscu832.github.io/cam-cleaner/`
 
 ---
 
@@ -37,7 +37,7 @@ Para tener esta aplicación disponible online de forma gratuita con **GitHub Pag
 Basta con clonar el repositorio y abrir `index.html` en cualquier navegador:
 
 ```bash
-git clone https://github.com/TU-USUARIO/CAM-CLEANER.git
-cd CAM-CLEANER
+git clone https://github.com/piscu832/cam-cleaner.git
+cd cam-cleaner
 ```
 Abre `index.html` en Chrome, Firefox, Edge o Safari.
