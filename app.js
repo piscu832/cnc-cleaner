@@ -326,16 +326,13 @@ N0250 M30
       return;
     }
 
-    // Generar nombre de descarga: nombre_original_clean.extension
+    // Generar nombre de descarga siempre con formato .txt
     const lastDotIndex = currentFileName.lastIndexOf('.');
-    let downloadName = 'programa_clean.nc';
+    let baseName = currentFileName;
     if (lastDotIndex !== -1) {
-      const base = currentFileName.substring(0, lastDotIndex);
-      const ext = currentFileName.substring(lastDotIndex);
-      downloadName = `${base}_clean${ext}`;
-    } else {
-      downloadName = `${currentFileName}_clean.nc`;
+      baseName = currentFileName.substring(0, lastDotIndex);
     }
+    const downloadName = `${baseName}_clean.txt`;
 
     const blob = new Blob([text], { type: 'text/plain;charset=utf-8' });
     const url = URL.createObjectURL(blob);
